@@ -25,11 +25,11 @@ def generateHTML(table,name):
   
   
 def generateTable(var,condition):
-  table = ttg.Truths(var,condition,ascending = True)
+  table = ttg.Truths(var,condition,ascending = False)
   return table
 
 # Generate a html file with truth table based on teacher requirement.
-
+# Some Example
 fourOriTable = generateTable(["a", "b", "c", "d"],
 [
   "~b",
@@ -44,5 +44,30 @@ fourOriTable = generateTable(["a", "b", "c", "d"],
   "(a and ~b and c) or (a and ~b) or (~b and c) or (~b and ~c and ~d) or ~(a and c and ~d)", # answer
 ])
 
-generateHTML(fourOriTable,"fourOriTable")
+firstOriTable = generateTable(["a", "b", "c"],
+[
+  "~a",
+  "~b",
+  "~c",
+  "a and b and c", # first expression
+  "a and ~b",
+  "~a and ~c",
+  "~(~a and ~c)",
+  "(a and ~b) and ~(~a and ~c)",
+  "(a and b and c) or ((a and ~b) and ~(~a and ~c)) ",
+])
 
+secondOriTable = generateTable(["a", "b", "c", "d"],
+[
+  "~a",
+  "~b",
+  "~c",
+  "~d",
+  "~a and ~b", # first expression
+  "~c and ~d",
+  "~(a and b)",
+  "~(c and d)",
+  "~(~(a and b) and ~(c and d))",
+  ])
+
+generateHTML(firstOriTable,"firstOriTable")
